@@ -54,6 +54,7 @@ class DBServices {
         'name': donor.name,
         'mobileNumber': donor.phoneNo,
         'address': donor.address,
+        'diseases': donor.diseases,
         'gender': donor.gender,
         'dob': donor.dob,
         'age': donor.age,
@@ -65,9 +66,11 @@ class DBServices {
         return false;
       }
       // Insert the document into the collection.
-      if(model!.addharNo == donor.addharNo){
-        debugPrint("Donor already preset ${model!.addharNo}");
-        return false;
+
+        if (model!=null && model.addharNo == donor.addharNo) {
+          debugPrint("Donor already preset ${model.addharNo}");
+          return false;
+
       }else {
         await collection.insert(document);
         return true;
@@ -92,6 +95,7 @@ class DBServices {
         return donor;
       } else {
         print('Donor not found for addharId: $addharId please register');
+        return null;
       }
     } on Exception catch (e) {
       print('Error in searching: $e');

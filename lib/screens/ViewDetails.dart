@@ -49,6 +49,10 @@ class ViewDetails extends StatelessWidget {
               const SizedBox(height: 10,),
                Text("Addhar Number : ${currentDonor.addharNo}",style: TextStyle(fontSize: 18),),
               const SizedBox(height: 10,),
+              currentDonor.diseases.isEmpty?
+              const Text("Diseases : No diseases",style: TextStyle(fontSize: 18),):
+              Text("Diseases : ${currentDonor.diseases}",style: TextStyle(fontSize: 18),),
+              const SizedBox(height: 10,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +71,7 @@ class ViewDetails extends StatelessWidget {
               const Divider(thickness: 3,),
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: 300,
+                height: 200,
                 child: ListView.builder(
                   itemCount: currentDonor.updateHistory.length,
                     itemBuilder: (context,index){
@@ -77,15 +81,12 @@ class ViewDetails extends StatelessWidget {
                   );
                 }),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(onPressed: (){
+              Center(
+                child: ElevatedButton(onPressed: (){
 
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>AddDonorEntry(currentDonor: currentDonor,)));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>AddDonorEntry(currentDonor: currentDonor,)));
 
-                  }, child: Text("Add Donor entry")),
-                ],
+                }, child:const Text("Add Donor entry")),
               )
             ],
           ),

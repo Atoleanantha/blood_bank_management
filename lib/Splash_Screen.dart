@@ -25,9 +25,9 @@ class _Splash_Screen extends State<Splash_Screen>{
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-                height: 60,
-                width: 60,
-                // child:  Image.asset('assets/logos/sanstha_logo.png')
+                height: 100,
+                width: 100,
+                child:  Image.asset('assets/blood.png')
             ),
             SizedBox(height: 10,),
             Text("Wel-Come",style: TextStyle(fontSize: 30),),

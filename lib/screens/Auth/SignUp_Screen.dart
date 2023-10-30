@@ -67,7 +67,15 @@ class _SignUpScreen extends State<SignUpScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text("Sign Up",style: TextStyle(color: Colors.purple,fontSize: 30,fontWeight: FontWeight.bold),),
+              const Text("Sign Up",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 30),),
+              const SizedBox(height: 10,),
+              SizedBox(
+                  height: 100,
+                  width: 100,
+                  child:  Image.asset('assets/blood.png')
+              ),
+              const Text("Blood Bank",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 30),),
+              const SizedBox(height: 20,),
               Form(
                   key: _formkey, //check field empty or not
                   child: Column(

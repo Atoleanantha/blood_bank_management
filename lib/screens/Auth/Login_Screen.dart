@@ -67,6 +67,15 @@ class _LoginScreen extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const Text("Sign In",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 30),),
+              const SizedBox(height: 10,),
+              SizedBox(
+                  height: 100,
+                  width: 100,
+                  child:  Image.asset('assets/blood.png')
+              ),
+              const Text("Blood Bank",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 30),),
+              const SizedBox(height: 20,),
               Form(
                   key: _formkey, //check field empty or not
                   child: Column(

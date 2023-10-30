@@ -1,3 +1,5 @@
+
+import 'package:blood_bank_management/Utils/Utils.dart';
 import 'package:blood_bank_management/screens/HomeScreen.dart';
 import 'package:blood_bank_management/services/database/DBServices.dart';
 import 'package:flutter/cupertino.dart';
@@ -57,10 +59,9 @@ class _AddDonorEntryState extends State<AddDonorEntry> {
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text("Entry Added")));
       Navigator.pop(context);
+
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text("Failed to add. Retry again!",
-              style: TextStyle(color: Colors.red))));
+      Utils().toastMassage("Failed to add. Retry again!");
     }
   }
 

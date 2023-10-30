@@ -1,4 +1,5 @@
 
+import 'package:blood_bank_management/Utils/Utils.dart';
 import 'package:blood_bank_management/model/RegistrationModel.dart';
 import 'package:blood_bank_management/screens/HomeScreen.dart';
 import 'package:blood_bank_management/services/database/DBServices.dart';
@@ -22,10 +23,12 @@ class _RegisterNewDonorState extends State<RegisterNewDonor> {
   TextEditingController addharInput=TextEditingController();
   TextEditingController phoneInput=TextEditingController();
   TextEditingController addressInput=TextEditingController();
+  TextEditingController diseasesInput=TextEditingController();
   TextEditingController firstNameInput=TextEditingController();
   TextEditingController middleNameInput=TextEditingController();
   TextEditingController surnameInput=TextEditingController();
   bool isNotOnline=false;
+  bool isLoading=false;
 
   @override
   void initState() {
@@ -61,6 +64,9 @@ class _RegisterNewDonorState extends State<RegisterNewDonor> {
   ];
 
   Future<void> _submitForm() async {
+    setState(() {
+      isLoading=true;
+    });
     if(selectedGender.isEmpty){
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Please select gender",style: TextStyle(color: Colors.red),)));
     }
@@ -77,18 +83,17 @@ class _RegisterNewDonorState extends State<RegisterNewDonor> {
               gender: selectedGender,
               dob: dateInput.text.toString(),
               age: ageInput.text.toString(),
+              diseases: diseasesInput.text.toString(),
               address: addressInput.text.toString()));
 
       if(isInserted) {
         Future.delayed(const Duration(seconds: 2), () {
-          ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text("Registration Successful")));
+          Utils().toastMassage("Registration Successful");
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) => HomeScreen()));
         });
       }else{
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("check addharId donor already registered")));
+        Utils().toastMassage("check addharId donor already registered");
       }
 
     }else{
@@ -96,6 +101,7 @@ class _RegisterNewDonorState extends State<RegisterNewDonor> {
             const SnackBar(content: Text("Something went wrong")));
 
     }
+    isLoading=false;
   }
 
   int calculateAge(selectedDate) {
@@ -332,9 +338,31 @@ class _RegisterNewDonorState extends State<RegisterNewDonor> {
                     ),
                   ],
                 ),
-                !isNotOnline?
-                ElevatedButton(onPressed: _submitForm, child:const Text("Register"))
-                    :ElevatedButton(onPressed: (){}, child:const Text("Check internet Connection"))
+                const SizedBox(height: 15,),
+                Row(
+                  children: [
+                    const Text("Diseases\n (if any) : ",style: TextStyle(),),
+                    const SizedBox(width: 10,),
+                    Container(
+                      padding:const EdgeInsets.only(left: 10,right: 10,),
+                      decoration: BoxDecoration(
+                        border: Border.all()
+                      ),
+                      width: MediaQuery.of(context).size.width-100,
+                      child: TextFormField(
+                        controller: diseasesInput,
+                        maxLines: 5,
+                          validator: (value){
+
+                          }
+                      ),
+
+                    ),
+                  ],
+                ),
+
+                !isLoading?ElevatedButton(onPressed: _submitForm, child:const Text("Register")):const SizedBox(height:20,width:20,child: CircularProgressIndicator(),)
+
               ],
             ),
           ),

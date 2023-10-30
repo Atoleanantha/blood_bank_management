@@ -7,6 +7,7 @@ class RegistrationModel {
   String dob;
   String age;
   String address;
+  String diseases;
   RegistrationModel({
     required this.name,
     required this.addharNo,
@@ -16,6 +17,7 @@ class RegistrationModel {
     required this.dob,
     required this.age,
     required this.address,
+    required this.diseases,
   });
 }
 
@@ -30,6 +32,7 @@ class RetriveDonorModel extends RegistrationModel {
       required super.dob,
       required super.age,
       required super.address,
+      required super.diseases,
       required this.updateHistory});
 
   factory RetriveDonorModel.fromMap(Map<String, dynamic> map) {
@@ -42,6 +45,7 @@ class RetriveDonorModel extends RegistrationModel {
       dob: map['dob'],
       age: map['age'],
       bloodGroup: map['bloodGroup'],
+        diseases: map['diseases'],
       updateHistory: List<String>.from(map['updateHistory']),
     );
   }
