@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "693497036668",
+    "project_id": "blood-bank-ced6f",
+    "storage_bucket": "blood-bank-ced6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693497036668:android:eb48dd2c8d8ca4b0c42ef9",
+        "android_client_info": {
+          "package_name": "com.infinity.blood_bank_management"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOqEbMDfQQjZAd-o1fe8d811VOpV7b0hw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
